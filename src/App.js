@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-
+import users from './../src/users.json';
+import Form from './components/Form';
+import React, { useState } from 'react';
 function App() {
+  const [movies, setMovies] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form setMovies={setMovies} />
+      <div style={{color: 'white'}}>
+        {movies &&
+          movies.map((movie) => {
+            console.log(movies);
+            return <h1>{movie.title}</h1>;
+          })}
+      </div>
     </div>
   );
 }
